@@ -2,10 +2,15 @@
 const express = require("express"),
     fs = require("fs"),
     bodyParser = require("body-parser"),
-    webSocket = require("ws")
+    webSocket = require("ws"),
+    Player = require("./model/Player.js")
 
 const app = express()
 app.use(bodyParser.json())
+
+// ctx
+let objects = []
+
 
 // REQUESTS
 app.get("/", (req, res) => {
@@ -26,19 +31,24 @@ const server = app.listen(3000, "0.0.0.0", () => console.log("server up")),
     app.use(express.static(__dirname+"/public"))
 
 // WEB SOCKET
-let idGiver = 0
 wss.on("connection", (ws, req) => {
-    let ip = req.socket.remoteAddress
-    ws.info = { id: idGiver++, ip: ip }
+    let player = createPlayer(req.socket.remoteAddress, ws)
+    objects.push(player)
 
-    console.log("CONNECTION: " + ip)
+
+    console.log("CONNECTION: " + player.ip)
 
     ws.on("close", () => {
-        console.log("DISCONNECT: " + ip)
+        console.log("DISCONNECT: " + player.ip)
+        objects = objects.filter(p => p.id !== player.id)
     })
 
-    ws.on("message", m => {
-        console.log(m.toString())
+    ws.on("message", message => {
+        let m = JSON.parse(message.toString())
+        if (m.t !== "update") console.log(m)
+
+        if (m.t == "update") player.update(m.v)
+        else if (m.t == "getSelf") player.send({t:"self", v:player})
     })
 })
 
@@ -52,5 +62,30 @@ function wsSend(ws, obj) {
     ws.send(JSON.stringify(obj))
 }
 
-let a = 0
-setInterval(() => wsSendAll({lol:a++}),10)
+function createPlayer(ip, ws) {
+    let p = new Player(ip, ws, "player", 50, 50, 10, 10, "aliceblue", 1)
+    p.send({t:"auth", v:p})
+    return p
+}
+
+
+
+// GAME
+
+let isLoop = false, fps = 1000/30
+
+function loop() {
+    wsSendAll({t:"d", o:objects})
+    if (isLoop) setTimeout(loop, fps)
+}
+
+function start() {
+    if (!isLoop) {
+        isLoop = true
+        loop()
+    }
+}start()
+
+function stop() {
+    isLoop = false
+}
