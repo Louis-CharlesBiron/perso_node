@@ -1,0 +1,3 @@
+A:\nodejs\MultiPlat\obj\Debug\MultiPlat.njsproj.AssemblyReference.cache
+A:\nodejs\MultiPlat\obj\Debug\MultiPlat.njsproj.CoreCompileInputs.cache
+A:\nodejs\MultiPlat\bin\Microsoft.NodejsTools.WebRole.dll
