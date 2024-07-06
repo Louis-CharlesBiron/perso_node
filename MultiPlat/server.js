@@ -51,3 +51,6 @@ function wsSendAll(obj) {
 function wsSend(ws, obj) {
     ws.send(JSON.stringify(obj))
 }
+
+let a = 0
+setInterval(() => wsSendAll({lol:a++}),10)
