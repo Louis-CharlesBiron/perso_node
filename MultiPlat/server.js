@@ -36,7 +36,8 @@ wss.on("connection", (ws, req) => {
     objects.push(player)
 
 
-    console.log("CONNECTION: " + player.ip)
+    console.log("CONNECTION: " + player.ip)//
+    wsSendAll({t:"d", o:objects})//
 
     ws.on("close", () => {
         console.log("DISCONNECT: " + player.ip)
@@ -47,7 +48,10 @@ wss.on("connection", (ws, req) => {
         let m = JSON.parse(message.toString())
         if (m.t !== "update") console.log(m)
 
-        if (m.t == "update") player.update(m.v)
+        if (m.t == "update") {
+            player.update(m.v)
+            wsSendAll({t:"d", o:objects})
+        }
         else if (m.t == "getSelf") player.send({t:"self", v:player})
     })
 })
@@ -72,20 +76,20 @@ function createPlayer(ip, ws) {
 
 // GAME
 
-let isLoop = false, fps = 1000/30
-
-function loop() {
-    wsSendAll({t:"d", o:objects})
-    if (isLoop) setTimeout(loop, fps)
-}
-
-function start() {
-    if (!isLoop) {
-        isLoop = true
-        loop()
-    }
-}start()
-
-function stop() {
-    isLoop = false
-}
+//let isLoop = false, fps = 1000/60
+//
+//function loop() {
+//    wsSendAll({t:"d", o:objects})
+//    if (isLoop) setTimeout(loop, fps)
+//}
+//
+//function start() {
+//    if (!isLoop) {
+//        isLoop = true
+//        loop()
+//    }
+//}start()
+//
+//function stop() {
+//    isLoop = false
+//}
