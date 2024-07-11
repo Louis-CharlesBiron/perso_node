@@ -42,6 +42,7 @@ wss.on("connection", (ws, req) => {
     ws.on("close", () => {
         console.log("DISCONNECT: " + player.ip)
         objects = objects.filter(p => p.id !== player.id)
+        wsSendAll({t:"d", o:objects})
     })
 
     ws.on("message", message => {
