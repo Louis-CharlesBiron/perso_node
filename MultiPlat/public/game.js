@@ -18,6 +18,7 @@ function updateCvsSize(fw, fh) {
 
 // DRAW //
 let t=[], fps, avgFps
+
 function draw(objs) {
     // clear
     ctx.clearRect(0, 0, cvs.width, cvs.height) 
@@ -64,7 +65,7 @@ function playerloop() {
     if (activeKeys.right) player.x+=s
     if (activeKeys.left) player.x-=s
 
-    send({t:"update", v:{x:player.x, y:player.y, w:player.w, h:player.h, c:player.c, s:player.s}}) //all attrs
+    if (Object.values(activeKeys).some(x=>x)) send({t:"update", v:{x:player.x, y:player.y, w:player.w, h:player.h, c:player.c, s:player.s}}) //all attrs
 
 
     //PPS (not my script)
