@@ -3,8 +3,8 @@ const { app, BrowserWindow } = require("electron");
 // Function to create a transparent window
 function createWindow() {
   const window = new BrowserWindow({
-    width: 0,
-    height: 0,
+    width: 600,
+    height: 800,
     transparent: true,
     frame: false,
     fullscreen: true,
