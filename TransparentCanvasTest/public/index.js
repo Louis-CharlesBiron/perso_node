@@ -9,9 +9,6 @@ function resizeCanvas() {
 window.addEventListener("resize", resizeCanvas)
 resizeCanvas()
 
-//ctx.fillStyle = "rgba(0, 0, 255, 0.3)"; // Blue with some transparency
-//ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill the entire canvas with the color
-
 let isdrawing=false, lastX=null, lastY=null
 
 canvas.onmousemove=e=>{
