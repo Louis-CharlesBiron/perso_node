@@ -1,6 +1,0 @@
-A:\nodejs\MultiPlat\obj\Debug\MultiPlat.njsproj.AssemblyReference.cache
-A:\nodejs\MultiPlat\obj\Debug\MultiPlat.njsproj.CoreCompileInputs.cache
-A:\nodejs\MultiPlat\bin\Microsoft.NodejsTools.WebRole.dll
-A:\perso_node\MultiPlat\obj\Debug\MultiPlat.njsproj.AssemblyReference.cache
-A:\perso_node\MultiPlat\obj\Debug\MultiPlat.njsproj.CoreCompileInputs.cache
-A:\perso_node\MultiPlat\bin\Microsoft.NodejsTools.WebRole.dll
