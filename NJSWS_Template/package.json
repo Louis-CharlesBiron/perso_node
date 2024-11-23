@@ -4,14 +4,16 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "start": "npx @neutralinojs/neu run",
     "i": "npm install && npx @neutralinojs/neu update && powershell -Command \"Remove-Item -Path src/assets/scripts/*.ts -Force\"",
-    "idk":"node test.js"
+    "start": "concurrently  \"npx @neutralinojs/neu run\"  \"node back/server.js\""
   },
   "keywords": [],
   "author": "Louis-Charles Biron",
   "license": "ISC",
   "dependencies": {
-    "robotjs": "^0.6.0"
+    "concurrently": "^9.1.0",
+    "express": "^4.19.2",
+    "robotjs": "^0.6.0",
+    "ws": "^8.18.0"
   }
 }

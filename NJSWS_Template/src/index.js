@@ -1,4 +1,4 @@
-const ws = new WebSocket("wss://"+location.host)
+const ws = new WebSocket("ws://localhost:3000")
 
 function send(obj) {
     ws.send(JSON.stringify(obj))
@@ -10,3 +10,5 @@ ws.onopen=()=>{
         console.log(m)
     }
 } 
+
+console.log("Hi")

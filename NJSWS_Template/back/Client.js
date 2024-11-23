@@ -24,4 +24,4 @@ class Client {
 	get ws() {return this._ws}
 }
 
-export default Client
+module.exports = Client

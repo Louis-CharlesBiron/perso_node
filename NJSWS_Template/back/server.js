@@ -5,7 +5,7 @@ const express = require("express"),
     webSocket = require("ws"),
     Client = require('./Client')
 
-const app = express()
+const app = express(), PORT = 3000
 app.use(bodyParser.json())
 
 // REQUESTS
@@ -18,7 +18,7 @@ app.get("/", (req, res)=>{
 })
 
 // SERVER
-const server = app.listen(3000, "0.0.0.0", ()=>console.log("server up")),
+const server = app.listen(PORT, "0.0.0.0", ()=>console.log("server up (http://localhost:$"+PORT+")")),
     wss = new webSocket.Server({ server })
     app.use(express.static(__dirname+"/public"))
 
@@ -38,6 +38,8 @@ wss.on("connection", (ws, req)=>{
     ws.on("message", message=>{
         let m = JSON.parse(message.toString())
         console.log(m)
+
+        if (m.type == "kill") process.exit()
     })
 
 })
