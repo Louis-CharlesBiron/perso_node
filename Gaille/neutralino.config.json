@@ -15,8 +15,13 @@
   "nativeAllowList": [
 "app.*",
 "os.*",
-"robot.*",
-"debug.log"
+"clipboard.*",
+"computer.*",
+"debug.*",
+"events.*",
+"filesystem.*",
+"clipboard.*",
+"window.*"
   ],
   "modes": {
     "window": {
@@ -26,16 +31,17 @@
       "minWidth": 400,
       "minHeight": 200,
       "center": true,
-      "fullScreen": true,
-      "alwaysOnTop": true,
+      "fullScreen": false,
+      "alwaysOnTop": false,
       "icon": "/src/assets/img/favicon.png",
       "enableInspector": true,
-      "borderless": true,
+      "borderless": false,
       "transparent": true,
       "maximize": false,
       "hidden": false,
       "resizable": true,
-      "exitProcessOnClose": false
+      "exitProcessOnClose": false,
+      "useSavedState": false
     }
   },
   "cli": {
@@ -44,14 +50,5 @@
     "clientLibrary": "/src/assets/scripts/neutralino.js",
     "binaryVersion": "5.4.0",
     "clientVersion": "5.4.0"
-  },
-  "chrome": {
-    "width": 800,
-    "height": 600,
-    "args":  "--user-agent=\"Neutralinojs chrome mode\"",
-    "nativeBlockList": [
-      "filesystem.*",
-      "os.*"
-    ]
   }
 }

@@ -6,6 +6,8 @@
   "scripts": {
     "i": "npm install && npx @neutralinojs/neu update && powershell -Command \"Remove-Item -Path src/assets/scripts/*.ts -Force\"",
     "start": "concurrently  \"npx @neutralinojs/neu run\"  \"node back/server.js\"",
+    "front": "cnpx @neutralinojs/neu run",
+    "back": "node back/server.js",
     "build": ""
   },
   "keywords": [],
