@@ -18,4 +18,9 @@ html, body {
     height: 100%;
     background: transparent;
     z-index: 1000;
-  }
+}
+
+span {
+    user-select: none;
+    pointer-events: none;
+}

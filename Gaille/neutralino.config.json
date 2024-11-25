@@ -32,7 +32,7 @@
       "minHeight": 200,
       "center": true,
       "fullScreen": false,
-      "alwaysOnTop": false,
+      "alwaysOnTop": true,
       "icon": "/src/assets/img/favicon.png",
       "enableInspector": true,
       "borderless": false,
