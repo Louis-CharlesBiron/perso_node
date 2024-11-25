@@ -51,7 +51,7 @@ function createClear(radius, radVariation=0, pos=[0,0], Yvariation=0) {
     ctx.globalCompositeOperation = "source-over"
   
     // drag
-    if (m.clicked && dist < 50) {
+    if (m.clicked && dist < dot.radius) {
         mouseup = true
         if (dot?.currentAnim?.id == adotShapeAnim?.id && adotShapeAnim) adotShapeAnim.end()
         dot.x = m.x
