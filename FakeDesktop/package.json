@@ -1,0 +1,18 @@
+{
+  "name": "fakedesktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "i": "npm install && npx @neutralinojs/neu update && powershell -Command \"Remove-Item -Path src/assets/scripts/*.ts -Force\"",
+    "start": "concurrently  \"npx @neutralinojs/neu run\"  \"node back/server.js\"",
+    "build": ""
+  },
+  "keywords": [],
+  "author": "Louis-Charles Biron",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.0",
+    "ws": "^8.18.0"
+  }
+}
